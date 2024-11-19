@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "LinkedIn Email Extractor",
+    "version": "1.0",
+    "description": "Extracts work email addresses from LinkedIn profiles.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "https://www.linkedin.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.linkedin.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        }
+    }
+}
