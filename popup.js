@@ -28,8 +28,13 @@ async function extractEmail(url) {
   const nameElement = document.querySelector(".text-heading-xlarge");
   if (nameElement) {
     const fullName = nameElement.textContent.trim();
-    [firstName, ...lastNameParts] = fullName.split(" ");
-    lastName = lastNameParts.join(" ");
+    const nameParts = fullName.trim().split(" ");
+
+    // First name is everything before the last part
+    firstName = nameParts.slice(0, nameParts.length - 1).join(" ");
+
+    // Last name is the last part
+    lastName = nameParts[nameParts.length - 1];
   } else {
     firstName = "";
     lastName = "";
