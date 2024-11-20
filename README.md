@@ -25,6 +25,7 @@ To set up and run this project locally, follow these steps:
 ### Clone the repository
 
 ```bash
-git clone https://github.com/imransid/full-stack-engineering-task.git
-cd full-stack-engineering-task
+git clone https://github.com/imransid/EmailFinder.git
+cd email-backend
+yarn start
 ```

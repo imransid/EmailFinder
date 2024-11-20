@@ -68,9 +68,6 @@ async function extractEmail(url) {
   } else {
     website = "";
   }
-  // Log results
-
-  console.log("website", website, firstName, lastName);
 
   if (!emailHeader && website !== "") {
     // No email found in DOM, fallback to Hunter.io API
