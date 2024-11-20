@@ -1,0 +1,9 @@
+# Node modules in the email-backend directory
+/email-backend/node_modules/
+
+# Other common ignores
+node_modules/
+*.log
+.env
+dist/
+build/

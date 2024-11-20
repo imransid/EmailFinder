@@ -45,11 +45,6 @@ async function extractEmail(url) {
     header.textContent.includes("Email")
   );
 
-  // Extract Website
-  const websiteHeader = headers.find((header) =>
-    header.textContent.includes("Website")
-  );
-
   // Extract website
   const websiteSection = Array.from(
     document.querySelectorAll(".pv-contact-info__contact-type h3")
@@ -69,6 +64,8 @@ async function extractEmail(url) {
     website = "";
   }
   // Log results
+
+  console.log("website", website, firstName, lastName);
 
   if (!emailHeader && website !== "") {
     // No email found in DOM, fallback to Hunter.io API
@@ -99,5 +96,28 @@ async function extractEmail(url) {
       email = "Email link not found.";
     }
   }
+
+  // If an email is found, make a POST request to your backend API
+  if (
+    email &&
+    email !== "No email found." &&
+    email !== "Email link not found."
+  ) {
+    try {
+      const response = await fetch("http://localhost:3000/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }), // Send the extracted email
+      });
+
+      const result = await response.json();
+      console.log("Response from backend:", result);
+    } catch (error) {
+      console.error("Error sending POST request:", error);
+    }
+  }
+
   return email;
 }
